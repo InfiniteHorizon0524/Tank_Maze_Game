@@ -1,0 +1,16 @@
+# IDE
+.vscode/
+
+# Build
+Build/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Thumbnails
+Thumbs.db

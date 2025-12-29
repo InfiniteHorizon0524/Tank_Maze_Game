@@ -1,0 +1,2 @@
+// Generated RC template. The configure step replaces @APP_ICON_ICO@ with the absolute path to the icon.
+IDI_ICON1 ICON "@APP_ICON_ICO@"
