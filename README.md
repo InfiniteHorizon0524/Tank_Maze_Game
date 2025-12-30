@@ -112,7 +112,7 @@ CS101A_FinalProj/
 ### macOS
 
 ```bash
-git clone https://github.com/Baymin-ty/CS101A_FinalProj
+git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
 cd CS101A_FinalProj
 
 mkdir -p Build && cd Build
@@ -134,7 +134,7 @@ cmake --build . --config Debug -j
 
 ```powershell
 # 1. Clone the repository
-git clone https://github.com/Baymin-ty/CS101A_FinalProj
+git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
 cd CS101A_FinalProj
 
 # 2. Create build directory
