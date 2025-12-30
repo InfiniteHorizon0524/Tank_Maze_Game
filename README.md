@@ -1,6 +1,6 @@
 # 🎮 Tank Maze Game
 
-A multiplayer tank battle game built with SFML 3.0, featuring procedurally generated mazes, intelligent enemies, and real-time online multiplayer support.
+A multiplayer tank battle game built with SFML 3.0, featuring procedurally generated mazes, intelligent enemies, and real-time online multiplayer support. 
 
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
 ![SFML](https://img.shields.io/badge/SFML-3.0.2-green.svg)
