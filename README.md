@@ -1,10 +1,12 @@
 # 🎮 Tank Maze Game
 
-A multiplayer tank battle game built with SFML 3.0, featuring procedurally generated mazes, intelligent enemies, and real-time online multiplayer support. 
+A multiplayer tank battle game built with **SFML 3.0.2**, featuring procedurally generated mazes, intelligent enemies, and real-time online multiplayer support.
 
 ![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)
 ![SFML](https://img.shields.io/badge/SFML-3.0.2-green.svg)
 ![Platform](https://img.shields.io/badge/Platform-macOS%20%7C%20Windows-lightgrey.svg)
+
+---
 
 ## 📖 Table of Contents
 
@@ -20,13 +22,13 @@ A multiplayer tank battle game built with SFML 3.0, featuring procedurally gener
 
 ## ✨ Features
 
-- **Single Player Mode** - Battle against AI enemies and escape the maze
-- **Online Multiplayer** - Real-time cooperative or competitive gameplay via WebSocket
-- **Procedural Maze Generation** - Every game features a unique randomly generated maze
-- **Smart AI NPCs** - Enemies with pathfinding and strategic behavior
-- **Special Wall Types** - Destructible walls with unique effects (repositioning, healing, gold rewards)
-- **Cross-Platform Support** - Runs on both macOS and Windows
-- **Immersive Audio** - Dynamic background music and spatial sound effects
+- **Single Player Mode** — Battle against AI-controlled enemies and escape the maze  
+- **Online Multiplayer** — Real-time cooperative or competitive gameplay via WebSocket  
+- **Procedural Maze Generation** — Each game features a unique, randomly generated maze  
+- **Smart AI NPCs** — Enemies with pathfinding and strategic behavior  
+- **Special Wall Types** — Destructible walls with unique effects (collecting, healing, gold rewards)  
+- **Cross-Platform Support** — Runs on both macOS and Windows  
+- **Immersive audio** — Dynamic background music and spatial sound effects  
 
 ---
 
@@ -35,7 +37,7 @@ A multiplayer tank battle game built with SFML 3.0, featuring procedurally gener
 ```
 CS101A_FinalProj/
 ├── CMakeLists.txt                 # CMake build configuration
-├── README.md                      # This file
+├── README.md                      # Project documentation
 │
 ├── src/                           # Source code
 │   ├── core/                      # Core game logic
@@ -58,7 +60,7 @@ CS101A_FinalProj/
 │   │
 │   ├── network/                   # Networking module
 │   │   ├── NetworkManager.cpp     # WebSocket communication layer
-│   │   └── MultiplayerHandler.cpp # Multiplayer game state sync
+│   │   └── MultiplayerHandler.cpp # Multiplayer game state synchronization
 │   │
 │   └── include/                   # Header files (mirrors src/ structure)
 │       ├── core/
@@ -82,7 +84,7 @@ CS101A_FinalProj/
 │
 ├── music_assets/                  # Audio resources
 │   ├── menu.mp3                   # Menu background music
-│   ├── start.mp3, middle.mp3, climax.mp3  # In-game music
+│   ├── start.mp3, climax.mp3      # In-game music tracks
 │   ├── shoot.mp3, explode.mp3     # Combat sound effects
 │   └── ...                        # Additional sound effects
 │
@@ -99,42 +101,40 @@ CS101A_FinalProj/
 ### Prerequisites
 
 | Requirement | Version |
-|-------------|---------|
+|------------|---------|
 | C++ Compiler | C++20 support (GCC 10+, Clang 12+, MSVC 2019+) |
 | CMake | 3.16 or higher |
-| Git | For automatic SFML download |
+| Git | Required for automatic SFML download |
+| Node.js | Required for multiplayer support |
+
+---
 
 ### macOS
 
 ```bash
-# 1. Clone the repository
-git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
+git clone https://github.com/Baymin-ty/CS101A_FinalProj
 cd CS101A_FinalProj
 
-# 2. Create build directory
 mkdir -p Build && cd Build
-
-# 3. Configure (SFML will be downloaded automatically)
 cmake .. -DCMAKE_BUILD_TYPE=Release
-
-# 4. Build (using all CPU cores)
 cmake --build . --config Release -j
 
-# 5. Run the game
 open CS101AFinalProj.app
 ```
 
-**Debug build:**
+**Debug build**
 ```bash
 cmake .. -DCMAKE_BUILD_TYPE=Debug
 cmake --build . --config Debug -j
 ```
 
+---
+
 ### Windows (Visual Studio)
 
 ```powershell
 # 1. Clone the repository
-git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
+git clone https://github.com/Baymin-ty/CS101A_FinalProj
 cd CS101A_FinalProj
 
 # 2. Create build directory
@@ -150,6 +150,8 @@ cmake --build . --config Release -j
 .\Release\CS101AFinalProj.exe
 ```
 
+---
+
 ### Windows (MinGW)
 
 ```bash
@@ -159,54 +161,75 @@ cmake --build . -j
 ./CS101AFinalProj.exe
 ```
 
+---
+
 ### Quick Rebuild
 
-After initial configuration:
+After the initial configuration:
+
 ```bash
-cd Build && cmake --build . -j
+cd Build
+cmake --build . -j
 ```
+
+> If you modify `CMakeLists.txt` or add new dependencies, re-run `cmake ..`.
+
+---
+
+## 🚀 Running the Multiplayer Server
+
+```bash
+cd server
+node server.js
+```
+
+The server runs on `localhost:9999` by default.  
+Players connect by entering the server IP address in the in-game multiplayer menu.
 
 ---
 
 ## 🎮 Game Controls
 
-### Movement & Combat
+> **Note:** Controls differ between gameplay and menu interfaces.
+
+### Movement & Combat (In-Game)
 
 | Key | Action |
-|-----|--------|
-| `W` | Move upward |
+|----|--------|
+| `W` | Move up |
 | `A` | Move left |
-| `S` | Move downward |
+| `S` | Move down |
 | `D` | Move right |
-| **Mouse Move** | Aim turret |
-| **Left Click** | Fire bullet |
+| Mouse Move | Aim turret |
+| Left Click | Fire |
 
 ### Game Management
 
 | Key | Action |
-|-----|--------|
-| `P` | Pause / Resume game |
-| `ESC` | Pause menu / Return to previous screen |
-| `Space` | Enter wall placing mode |
+|----|--------|
+| `P` | Pause / Resume |
+| `E` | Hold to exit the maze |
+| `ESC` | Return to previous / home screen |
+| `Space` | Enter wall reposition mode |
 | `Enter` | Confirm selection in menus |
 
 ### Multiplayer-Specific
 
 | Key | Action |
-|-----|--------|
-| `F` | Rescue downed teammate (hold near teammate in Escape mode) |
+|----|--------|
+| `F` | Rescue downed teammate (hold nearby) |
 
 ### Menu Navigation
 
 | Key | Action |
-|-----|--------|
-| `W` / `↑` | Navigate up |
-| `S` / `↓` | Navigate down |
-| `A` / `←` | Decrease value |
-| `D` / `→` | Increase value |
-| `Enter` / `Space` | Select option |
+|----|--------|
+| `↑ / ↓` | Navigate |
+| `← / →` | Adjust value |
+| `D` | Toggle Dark Mode (menu only) |
+| `Enter` | Select |
 
 ---
+
 
 ## 🎯 Game Modes
 
@@ -217,7 +240,7 @@ Navigate through a procedurally generated maze, defeat AI enemies, and reach the
 **Cooperative**: Two players work together to escape the maze. If one player is downed, the other can rescue them by holding `F` nearby. Both players must reach the exit to win.
 
 ### Multiplayer - Battle Mode
-**Competitive**: Players fight against each other. Destroy your opponent's tank to claim victory. Collect coins from gold walls to recruit ally NPCs!
+**Competitive**: Players fight against each other. Destroy your opponent's tank or reach the exit first to claim victory. Collect coins from gold walls to recruit ally NPCs!
 
 ---
 
@@ -261,41 +284,34 @@ WebSocket-based multiplayer with:
 Audio manager with 3D positioning:
 - Sound effects attenuate based on distance from the camera
 - Different music tracks for menu, gameplay phases, and climax
-- Positional audio cues for off-screen events
 
 ---
 
 ## 💡 Innovations
 
-### 🌐 Cross-Platform Multiplayer
+### 🌐 Cross-Platform Support
 The game supports **seamless online multiplayer** between macOS and Windows players through a unified WebSocket protocol. The Node.js server handles room management and state relay.
-
-### 🖥 Cross-System Compatibility
-Built with CMake and SFML, the project compiles and runs identically on:
-- macOS (Intel & Apple Silicon)
-- Windows (MSVC & MinGW)
-
-Resource paths are automatically resolved for macOS app bundles via CoreFoundation APIs.
 
 ### 🧱 Wall System
 
 #### Basic Walls
 | Wall Type | Color | Description |
 |-----------|-------|-------------|
-| **Solid** | Dark Gray | Indestructible barrier, cannot be destroyed |
-| **Destructible** | Brown | Can be destroyed; **collected into inventory** for later placement |
+| **Solid Wall** | Dark Gray | Indestructible barrier, cannot be destroyed |
 
-#### Special Walls
+#### Destructible Special Walls
 | Wall Type | Color | Effect |
 |-----------|-------|--------|
+| **Collectible Wall** | Brown | **Collected into inventory** for later reposition |
 | **Gold Wall** | Golden | Awards **2 coins** when destroyed (3 coins can recruit 1 ally NPC) |
 | **Healing Wall** | Blue | Restores **25% health** when destroyed |
 
-#### Wall Placement System
-- Destroy **brown destructible walls** to collect them into your inventory
-- Press `Space` to enter **placement mode**
+#### Wall Reposition System
+- Destroy **brown collectible walls** to collect them into your inventory
+- Press `Space` to enter **Reposition mode**
 - Click on any empty tile to place a wall from your inventory
 - Use walls strategically to block enemies or create defensive positions
+
 
 ### 🤖 Intelligent NPC System
 AI tanks feature multiple behavior modes:
@@ -315,18 +331,16 @@ AI tanks feature multiple behavior modes:
 - **Spatial Sound Effects**: Combat sounds are positioned in 3D space
 - **Audio Feedback**: Distinct sounds for different wall types, hits, and actions
 
+
 ### 🗺️ Minimap & Dark Mode: Two Ways to Play
 
 The game offers two distinct visual modes that fundamentally change the gameplay experience:
 
 #### **Normal Mode with Minimap**
 In standard mode, players have access to a **real-time minimap** showing the entire maze layout. This transforms the game into a **strategic experience** where you can:
-- Plan optimal routes to the exit
 - Track enemy positions and movements  
 - Coordinate with teammates in multiplayer
 - Make informed decisions about which paths to take
-
-The minimap empowers players to think tactically, weighing risk vs. reward when choosing between shorter dangerous routes or longer safe paths.
 
 #### **Dark Mode: Pure Tension**
 Toggle Dark Mode for an entirely different experience. With **limited visibility** and **no minimap**, every corner becomes a potential ambush. The darkness creates:
@@ -345,26 +359,6 @@ This creates an incredible psychological tension:
 - *"They might be one step away from victory and I can't even see them!"*
 
 The combination of audio-driven suspense and visual uncertainty makes Dark Mode Battle the ultimate test of nerves and skill.
-
----
-
-## 🚀 Running the Multiplayer Server
-
-```bash
-cd server
-node server.js
-```
-
-The server runs on `localhost:9999` by default. Players connect by entering the server IP in the game's multiplayer menu.
-
----
-
-## 📦 Dependencies
-
-- **[SFML 3.0.2](https://www.sfml-dev.org/)** - Graphics, audio, and networking (auto-downloaded via CMake)
-- **Node.js** - For the multiplayer server (optional)
-
----
 
 ## 📄 License
 
