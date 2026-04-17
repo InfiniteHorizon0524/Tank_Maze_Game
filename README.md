@@ -113,7 +113,7 @@ CS101A_FinalProj/
 
 ```bash
 git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
-cd CS101A_FinalProj
+cd Tank_Maze_Game
 
 mkdir -p Build && cd Build
 cmake .. -DCMAKE_BUILD_TYPE=Release
@@ -135,7 +135,7 @@ cmake --build . --config Debug -j
 ```powershell
 # 1. Clone the repository
 git clone https://github.com/InfiniteHorizon0524/Tank_Maze_Game
-cd CS101A_FinalProj
+cd Tank_Maze_Game
 
 # 2. Create build directory
 mkdir Build; cd Build
